@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tietokantasovellus</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 { font-size: 1.4em; }
+      h2 { font-size: 1.1em; }
+    </style>
+  </head>
+  <body>
+    <h1>Tietokantasovelluksen esittelysivu</h1>
+    <p>Yleisiä linkkejä</p>
+    <ul>
+ 
+      <li><a href="https://github.com/rivorivo/Tsoha-Bootstrap">Työn repositorio</a></li>
+      <li><a href="https://github.com/rivorivo/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf?raw=true">Työn dokumentaatio</a></li>
+
+      <!-- Viikolla 2 voit laittaa kommentoidut linkitkin sivuille. 
+           Ota kommenttimerkit pois sen kielen ympäriltä, jota käytät -->
+
+      <!-- Linkit Java-kielelle.
+           Korvaa sana cstunnus omalla tktl-tunnuksellasi ja sana 
+           Tietokantasovellus tietokantasovelluksesi usersille 
+           pystytetyllä nimellä: 
+      -->
+      <!--
+      <li><a href="http://t-cstunnus.users.cs.helsinki.fi/ConnectionTest">Connectiontest-ohjelma</a></li>
+      <li><a href="http://t-cstunnus.users.cs.helsinki.fi/Tietokantasovellus/html-demo/index.jsp">HTML-demosivujen etusivu</a></li>
+      <li><a href="http://t-cstunnus.users.cs.helsinki.fi/Tietokantasovellus/Listaustesti">Ensimmäinen oma tietokantalistaus</a></li>
+      -->
+      <!-- Linkit PHP-kielelle.
+           Korvaa sana cstunnus omalla tktl-tunnuksellasi ja sana 
+           Tietokantasovellus sen hakemiston nimellä, missä 
+           sovelluksesi usersin htdocs-kansiossa sijaitsee:
+      -->
+      <!--
+      <li><a href="http://cstunnus.users.cs.helsinki.fi/connectiontest.php">Connectiontest-ohjelma</a></li>
+      <li><a href="http://cstunnus.users.cs.helsinki.fi/Tietokantasovellus/html-demo/index.html">HTML-demosivujen etusivu</a></li>
+      <li><a href="http://cstunnus.users.cs.helsinki.fi/Tietokantasovellus/listaustesti.php">Ensimmäinen oma tietokantalistaus</a></li>
+      -->
+      
+      <!-- Viikolla 3 laita alla kommentoitu linkki osoittamaan omaan kirjautumissivuusi. -->
+      <!--
+      <li><a href="http://cstunnus.users.cs.helsinki.fi/Tietokantasovellus/index.php">Sovelluksen kirjautumissivu</a></li>
+      -->
+    </ul>
+
+    <h2>   Elektronisen keittokirjan tarkoituksena on tuoda ratkaisuja ja ehdotuksia arkisiin tilanteisiin, joissa inspiraatio keittiössä on lopussa. Keittokirja sisältää reseptejä ruokalajeista sekä ateriakokonaisuuksista. Ateriakokonaisuus koostuu alku-, pää- ja jälkiruuista ja reseptit voivat sisältää juomasuosituksia. Yksittäisen ruokalajin kohdalla keittokirjassa esitetään raaka-aineet ja niiden määrät sekä valmistusohje vaiheittain. Ruokalajiin voi liittyä kuva valmiista annoksesta sekä valmistusohjeen vaiheisiin liittyviä kuvia. 
+
+Reseptejä voi hakea raaka-aineiden tai reseptin nimen perusteella. Haussa on mahdollista eritellä jo kaapista löytyvät ja reseptiin halutut raaka-aineet. Reseptiin tarvittavista raaka-aineista koostuu ostoslista ja sen kustannusarvio. Myös luokkaa (kastike + alkuruoka tai vappu) voi käyttää hakuperusteena ja myös esim. sesongissa olevien kasvisten selaaminen tai hakuperusteena käyttäminen onnistuu.
+
+Toteutus on html-näkymäinen sivu ja ohjelmointikielenä käytetään PHP:tä ja tietokantapalvelimena PostgreSQL. Toimintaympäristö on laitoksen users-palvelin Tomcat- tai Apache-palvelimen alla. </h2>
+
+ 
+
+    <!--
+    <h2>Kirjautumistunnuksia testausta varten</h2>
+
+    <p>Laita tähän viikolla 3 lista tunnuksista, joilla sovellusta voi testata</p>
+    <p>Esim:<br />
+    Pääkäyttäjän tunnus ja salasana:<br /> admin, kissakala
+    </p>
+    -->
+  </body>
+</html>
