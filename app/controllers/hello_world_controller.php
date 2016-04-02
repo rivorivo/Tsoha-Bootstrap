@@ -9,22 +9,22 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      View::make('helloworld.html')
+      View::make('helloworld.html');
     }
 
     public static function recipe_list(){
-      View::make('suunnitelmat/recipe_list.html')
+      View::make('suunnitelmat/recipe_list.html');
     }
     public static function recipe_show(){
-      View::make('suunnitelmat/recipe_show.html')
+      View::make('suunnitelmat/recipe_show.html');
     }
     public static function edit_recipe(){
-      View::make('suunnitelmat/edit_recipe.html')
+      View::make('suunnitelmat/edit_recipe.html');
     }
      public static function login(){
-      View::make('suunnitelmat/login.html')
+      View::make('suunnitelmat/login.html');
     }
      public static function home(){
-      View::make('suunnitelmat/home.html')
+      View::make('suunnitelmat/home.html');
     }
   }

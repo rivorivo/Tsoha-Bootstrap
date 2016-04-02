@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Reseptit</h1>
+
+  <p>
+    <a href="#" class="btn btn-success">Lisää resepti</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Nimi</th>
+        <th>Kuinka monelle hengelle</th>
+        <th>Tunnisteet</th>
+        <th>Status</th>
+        <th>Lisäyspäivä</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Listataan pelit tähän -->
+      <tr>
+        <td><a href="#">Helppo ja hyvä linssikeitto</a></td>
+        <td>2</td>
+        <td><a href="#">kasvis</a>,<a href="#">keitto</a>,<a href="#">linssi</a></td>
+        <td><label class="label label-danger">kesken</label></td>
+        <td>2.4.2016</td>
+        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
