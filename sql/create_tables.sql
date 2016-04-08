@@ -24,7 +24,7 @@ id SERIAL PRIMARY KEY,
 kokkaaja_id INTEGER REFERENCES kokkaajat(id),
 name varchar(50) NOT NULL,
 kuvaus varchar(500) NOT NULL,
-lisätty DATE
+lisatty DATE
 );
 
 CREATE TABLE ainekset(

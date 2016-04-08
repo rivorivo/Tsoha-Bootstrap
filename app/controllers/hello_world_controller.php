@@ -1,15 +1,9 @@
 <?php
 
   class HelloWorldController extends BaseController{
-
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
    	  View::make('suunnitelmat/home.html');
-    }
-
-    public static function sandbox(){
-      // Testaa koodiasi täällä
-      View::make('helloworld.html');
     }
 
     public static function recipe_list(){
@@ -26,5 +20,11 @@
     }
      public static function home(){
       View::make('suunnitelmat/home.html');
+    }
+    public static function sandbox(){
+      $linssari = Resepti::find(1);
+      $reseptit = Resepti::all();
+      Kint::dump($reseptit);
+      Kint::dump($linssari);
     }
   }
