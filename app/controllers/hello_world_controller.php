@@ -22,9 +22,14 @@
       View::make('suunnitelmat/home.html');
     }
     public static function sandbox(){
-      $linssari = Resepti::find(1);
-      $reseptit = Resepti::all();
-      Kint::dump($reseptit);
-      Kint::dump($linssari);
+    $doom = new Resepti(array(
+      'name' => 'd',
+      'kuvaus' => 'tomsu',
+      'kokkaaja_id' => '1',
+      'lisatty' => '12.12.2012'
+      ));
+      $errors = $doom->errors();
+
+      Kint::dump($errors);
     }
   }

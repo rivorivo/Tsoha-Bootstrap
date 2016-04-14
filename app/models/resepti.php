@@ -3,6 +3,7 @@ class Resepti extends BaseModel{
 	public	$id, $name, $kuvaus, $kokkaaja_id, $lisatty;
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array('validate_string_length');
 	}
 
 	public static function all(){
@@ -50,4 +51,18 @@ class Resepti extends BaseModel{
     // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
     $this->id = $row['id'];
   }
+  public function validate_name(){
+  	validate_string_length($this->name,3);
+
+  //$errors = array();
+  //if($this->name == '' || $this->name == null){
+   // $errors[] = 'Nimi ei saa olla tyhjä!';
+  //}
+  //if(strlen($this->name) < 3){
+    //$errors[] = 'Nimen pituuden tulee olla vähintään kolme merkkiä!';
+  //}
+
+  //return $errors;
+}
+
 }
