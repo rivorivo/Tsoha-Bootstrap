@@ -16,16 +16,16 @@
       View::make('suunnitelmat/edit_recipe.html');
     }
      public static function login(){
-      View::make('suunnitelmat/login.html');
+      View::make('login.html');
     }
      public static function home(){
       View::make('suunnitelmat/home.html');
     }
     public static function sandbox(){
     $doom = new Resepti(array(
-      'name' => 'd',
+      'name' => 'ee',
       'kuvaus' => 'tomsu',
-      'kokkaaja_id' => '1',
+      'kokkaaja_id' => 'rrrrr',
       'lisatty' => '12.12.2012'
       ));
       $errors = $doom->errors();

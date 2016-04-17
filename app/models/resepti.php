@@ -3,7 +3,7 @@ class Resepti extends BaseModel{
 	public	$id, $name, $kuvaus, $kokkaaja_id, $lisatty;
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->validators = array('validate_string_length');
+		$this->validators = array('validate_name');
 	}
 
 	public static function all(){
@@ -51,18 +51,23 @@ class Resepti extends BaseModel{
     // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
     $this->id = $row['id'];
   }
-  public function validate_name(){
-  	validate_string_length($this->name,3);
 
-  //$errors = array();
-  //if($this->name == '' || $this->name == null){
-   // $errors[] = 'Nimi ei saa olla tyhjä!';
-  //}
-  //if(strlen($this->name) < 3){
-    //$errors[] = 'Nimen pituuden tulee olla vähintään kolme merkkiä!';
-  //}
+  public function update(){
+ 	$query = DB::connection()->prepare('UPDATE Reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES (:kokkaaja_id, :name, :kuvaus, :lisatty) RETURNING id');
 
-  //return $errors;
+ 	$query->execute(array('kokkaaja_id' => $this->kokkaaja_id, 'name' => $this->name, 'kuvaus' => $this->kuvaus, 'lisatty' => $this->lisatty));
+
+ 	$row = $query->fetch();
+ 	Kint::dump($row);
+   	$this->id = $row['id'];
+  }
+
+  public function destroy(){
+	$query = DB::connection()->prepare('DELETE * FROM reseptit WHERE id = :id LIMIT 1');
+  }
+
+  public function validate_name(){	
+  	return $this->{'validate_string_length'}($this->name,3);
 }
 
 }

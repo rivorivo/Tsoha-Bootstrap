@@ -17,11 +17,14 @@
     }
     public function validate_string_length($string, $length){
       $errors= array();
-      if($string=null){
-        $errors[]="Merkkijono ei saa olla tyhjä..";
+
+      if($string==''||$string=null){
+        $errors[]='Merkkijono ei saa olla tyhjä..';
       }
-      if($string.length()<$length){
-        $errors[] = "Merkkijonon tulee olla vähintään"+$length+"merkkiä pitkä..";
+
+      
+      if(strlen($this->name)<$length){
+        $errors[] = 'Merkkijonon tulee olla vähintään kolme merkkiä pitkä..';
       }
       return $errors;
     }
@@ -29,14 +32,18 @@
     public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
-
+  
+      $this->validators=array('validate_name');
       foreach($this->validators as $validator){
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
-        $validator_errors=array();
+        
+        $validator_errors[]=$this->{'validate_name'}();
+     
         $errors =array_merge($errors, $validator_errors);
+
       }
 
-      return $errors;
+      return $this->{'validate_name'}();
     }
 
   }

@@ -8,7 +8,10 @@
     HelloWorldController::sandbox();
   });
   $routes->get('/login', function(){
-  	HelloWorldController::login();
+  	UserController::login();
+  });
+  $routes->post('/login', function(){
+    UserController::handle_login();
   });
   $routes->get('/home', function(){
   	HelloWorldController::home();
@@ -30,4 +33,14 @@
   $routes->get('/resepti/:id/edit', function($id){
     ReseptitController::edit($id);
   });
+  $routes->post('/resepti/:id/edit', function($id){
+    ReseptitController::edit($id);
+  });
+  $routes->get('/resepti/:id/destroy', function($id){
+    ReseptitController::destroy($id);
+  });
+  $routes->post('/resepti/:id/destroy', function($id){
+    ReseptitController::destroy($id);
+  });
+  
 
