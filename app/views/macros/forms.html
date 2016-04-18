@@ -1,5 +1,9 @@
 {% macro destroy_button(action, text) %}
-  <form method="post" action="{{base_path}}/resepti/{{resepti.id}}/destroy" style="display: inline-block;">
+  <form method="post" action="destroy" style="display: inline-block;">
     <button type="submit" class="btn btn-danger">Poista</button>
   </form>
+{% endmacro %}
+{% macro cancel_button(action, text) %}
+<form action="" style="display: inline-block;">
+<button type="cancel" class="secondary_button">Peruuta</button>
 {% endmacro %}
