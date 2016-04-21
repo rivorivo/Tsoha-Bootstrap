@@ -1,18 +1,17 @@
 <?php
 
 //yleiset reitit
+  function check_logged_in(){
+    BaseController::check_logged_in();
+  }
+
   $routes->get('/', function() {
     HelloWorldController::index();
   });
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
-  $routes->get('/login', function(){
-  	UserController::login();
-  });
-  $routes->post('/login', function(){
-    UserController::handle_login();
-  });
+  
   $routes->get('/home', function(){
   	HelloWorldController::home();
   });
@@ -42,5 +41,24 @@
   $routes->post('/resepti/:id/destroy', function($id){
     ReseptitController::destroy($id);
   });
-  
+    $routes->get('/resepti', 'check_logged_in', function(){
+  ReseptitController::index();
+});
 
+$routes->get('/resepti/uusi', 'check_logged_in', function(){
+  ReseptitController::create();
+});
+
+$routes->get('/resepti/:id', 'check_logged_in', function($id){
+  ReseptitController::show($id);
+});
+//kokkaaja reitit
+$routes->post('/logout', function(){
+  UserController::logout();
+});
+$routes->get('/login', function(){
+    UserController::login();
+});
+  $routes->post('/login', function(){
+    UserController::handle_login();
+});

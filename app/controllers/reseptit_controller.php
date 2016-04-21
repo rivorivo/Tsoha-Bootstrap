@@ -1,19 +1,22 @@
 <?php
 class ReseptitController extends BaseController{
 	public static function index(){
+    BaseController::check_logged_in();
 	$reseptit = Resepti::all();
 	View::make('resepti/index.html', array('reseptit' => $reseptit));
 	}
 	public static function create(){
+    BaseController::check_logged_in();
 		View::make('resepti/uusi.html');
 	}
 
 	public static function show($id){
+    BaseController::check_logged_in();
 		View::make('resepti/show.html');
 	}
 
   public static function store(){
- 
+    BaseController::check_logged_in();
     $params = $_POST;
 
     $attributes = array(  
@@ -36,12 +39,14 @@ class ReseptitController extends BaseController{
   }
   }
   public static function edit($id){
+    self::check_logged_in();
     $resepti = Resepti::find($id);
     View::make('resepti/edit.html', array('attributes' => $resepti));
   }
 
   // Reseptin muokkaaminen (lomakkeen käsittely)
   public static function update($id){
+    self::check_logged_in();
     $params = $_POST;
 
     $attributes = array(
@@ -67,6 +72,7 @@ class ReseptitController extends BaseController{
 
   // Reseptin poistaminen
   public static function destroy($id){
+    self::check_logged_in();
     // Alustetaan Resepti-olio annetulla id:llä
     $resepti = new Resepti(array('id' => $id));
     // Kutsutaan Resepti-malliluokan metodia destroy, joka poistaa reseptin sen id:llä
