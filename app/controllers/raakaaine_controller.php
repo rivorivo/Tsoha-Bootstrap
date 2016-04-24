@@ -2,7 +2,7 @@
 class RaakaaineController extends BaseController{
 		
   public static function index(){
-    BaseController::check_logged_in();
+  BaseController::check_logged_in();
 	$raakaaineet = Raakaaine::all();
 	View::make('raakaaine/index.html', array('raakaaineet' => $raakaaineet));
 	}
@@ -23,7 +23,6 @@ class RaakaaineController extends BaseController{
 
    
     $attributes = array(  
-     	'id'=>$params['id'],
 		'rakategoria_id'=>$params['rakategoria_id'],
 		'name'=>$params['name'],
 		'kilohinta'=>$params['kilohinta']

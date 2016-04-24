@@ -66,7 +66,7 @@ $routes->get('/login', function(){
    $routes->get('/raakaaineet', function(){
     RaakaaineController::index();
   });
-  $routes->post('/raakaaineet', function(){
+  $routes->post('/raakaaine', function(){
     RaakaaineController::store();
   });
   $routes->get('/raakaaine/uusi', function(){

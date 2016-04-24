@@ -16,12 +16,13 @@ public function __construct($attributes){
 		$raakaaineet = array();
 
 	foreach ($rows as $row) {
-		$raakaaineet[]= new Raakaaine(array(
+		$raakaaineet[]= array(
 				'id'=>$row['id'],
 				'rakategoria_id'=>$row['rakategoria_id'],
+				'rakategoria'=>Rakategoria::getName($row['rakategoria_id']),
 				'name'=>$row['name'],
 				'kilohinta'=>$row['kilohinta']
-				));
+				);
 		}
 		return $raakaaineet;
 	}
@@ -36,6 +37,7 @@ public function __construct($attributes){
 			$raakaaine= new Raakaaine(array(
 				'id'=>$row['id'],
 				'rakategoria_id'=>$row['rakategoria_id'],
+				'rakategoria'=>Rakategoria::getName($row['rakategoria_id']),
 				'name'=>$row['name'],
 				'kilohinta'=>$row['kilohinta']
 				));			

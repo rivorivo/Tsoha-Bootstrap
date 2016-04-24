@@ -49,6 +49,7 @@ class Resepti extends BaseModel{
 
 	 public function save(){
     // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
+	
     $query = DB::connection()->prepare('INSERT INTO Reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES (:kokkaaja_id, :name, :kuvaus, :lisatty) RETURNING id');
     // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
     $query->execute(array('kokkaaja_id' => $this->kokkaaja_id, 'name' => $this->name, 'kuvaus' => $this->kuvaus, 'lisatty' => $this->lisatty));

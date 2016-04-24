@@ -2,7 +2,7 @@
 class ReseptitController extends BaseController{
 	
   public static function index(){
-    BaseController::check_logged_in();
+   
 	$reseptit = Resepti::all();
 	View::make('resepti/index.html', array('reseptit' => $reseptit));
 	}
@@ -12,7 +12,7 @@ class ReseptitController extends BaseController{
 	}
 
 	public static function show($id){
-    BaseController::check_logged_in();
+   
     $resepti= Resepti::find($id);
 		View::make('resepti/show.html', array('resepti' => $resepti));
 	}

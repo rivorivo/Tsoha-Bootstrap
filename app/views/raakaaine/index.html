@@ -21,7 +21,9 @@
       {% for raakaaine in raakaaineet %}
       <tr>
         <td><a href="{{base_path}}/raakaaine/{{raakaaine.id}}">{{raakaaine.name}}</a></td>
-        <td><a href="{{base_path}}/rakategoria/{{raakaaine.rakategoria_id}}">{{raakaaine.rakategoria_id}}</a></td>
+        <td>        
+        {{raakaaine.rakategoria}}
+        </td>
         <td>{{raakaaine.kilohinta}}</td>
         <th><a class="btn btn-default btn-sm" href="{{base_path}}/raakaaine/{{raakaaine.id}}/edit">Muokkaa</a></th>
       </tr>
