@@ -1,7 +1,10 @@
  <?php
  class UserController extends BaseController{
 
-  
+public static function kirjautunut(){
+    $kokkaaja_logged_in= BaseController::get_user_logged_in();
+  return $kokkaaja_logged_in;
+}
  	public static function login(){
       View::make('login.html');
     }
@@ -21,5 +24,10 @@
    public static function logout(){
     $_SESSION['kokkaaja'] = null;
     Redirect::to('/login', array('message' => 'Olet kirjautunut ulos!'));
+  }
+  public function show($id){
+     BaseController::check_logged_in();
+     $kokkaaja= Kokkaaja::find($id);
+     View::make('/kokkaaja/show.html', array('kokkaaja' => $kokkaaja));
   }
 }

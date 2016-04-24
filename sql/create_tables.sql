@@ -14,8 +14,6 @@ CREATE TABLE raakaaineet(
 	id SERIAL PRIMARY KEY,
 	rakategoria_id INTEGER REFERENCES rakategoriat(id),
 	name varchar(50) NOT NULL,
-	sesonkiAlku DATE,
-	sesonkiLoppu DATE,
 	kilohinta decimal
 );
 

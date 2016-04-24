@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Raaka-aineet</h1>
+
+  <p>
+    <a href="{{base_path}}/raakaaine/uusi" class="btn btn-success">Lisää raaka-aine</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Nimi</th>
+        <th>Kategoria</th>
+        <th>Kilohinta-arvio</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Listataan reseptit tähän -->
+      {% for raakaaine in raakaaineet %}
+      <tr>
+        <td><a href="{{base_path}}/raakaaine/{{raakaaine.id}}">{{raakaaine.name}}</a></td>
+        <td><a href="{{base_path}}/rakategoria/{{raakaaine.rakategoria_id}}">{{raakaaine.rakategoria_id}}</a></td>
+        <td>{{raakaaine.kilohinta}}</td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/raakaaine/{{raakaaine.id}}/edit">Muokkaa</a></th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

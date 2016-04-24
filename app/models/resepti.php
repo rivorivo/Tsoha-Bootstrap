@@ -8,20 +8,23 @@ class Resepti extends BaseModel{
 
 	public static function all(){
 		
-		$query = DB::connection()->prepare('SELECT * FROM reseptit');
+		$query = DB::connection()->prepare('SELECT * FROM reseptit ORDER BY name ASC');
 		$query->execute();
 		$rows = $query->fetchAll();
 		$reseptit = array();
 
-		foreach ($rows as $row) {
-			$reseptit[] = new Resepti(array(
+
+		foreach ($rows as $row) {			
+			$reseptit[] = array(
 			'id' => $row['id'],
 			'name' => $row['name'],
 			'kuvaus' => $row['kuvaus'],
-			'kokkaaja_id' => $row['kokkaaja_id'],
+			'kokkaajaNimi' => Kokkaaja::getName($row['kokkaaja_id']),	
+			'kokkaaja_id' => $row['kokkaaja_id'],		
 			'lisatty' => $row['lisatty']
-			));
+			);
 		}
+
 		return $reseptit;
 	}
 
@@ -31,16 +34,19 @@ class Resepti extends BaseModel{
 		$row = $query->fetch();
 
 		if($row){
-			$resepti = new Resepti(array(
+			$resepti =  array(
 			'id' => $row['id'],
-			'nimi' => $row['name'],
+			'name' => $row['name'],
 			'kuvaus' => $row['kuvaus'],
-			'kokkaaja_id' => $row['kokkaaja_id'],
+			'kokkaajaNimi' => Kokkaaja::getName($row['kokkaaja_id']),
+			'kokkaaja_id' => $row['kokkaaja_id'],	
 			'lisatty' => $row['lisatty']
-			));
+			);
+			
 		}
 		return $resepti;
 	}
+
 	 public function save(){
     // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
     $query = DB::connection()->prepare('INSERT INTO Reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES (:kokkaaja_id, :name, :kuvaus, :lisatty) RETURNING id');
@@ -63,7 +69,8 @@ class Resepti extends BaseModel{
   }
 
   public function destroy(){
-	$query = DB::connection()->prepare('DELETE * FROM reseptit WHERE id = :id LIMIT 1');
+	$query = DB::connection()->prepare('DELETE FROM reseptit WHERE id = :id');
+	$query->execute(array('id' => $this->id));
   }
 
   public function validate_name(){	

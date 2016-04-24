@@ -31,6 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
           <!-- Sovelluksen nimi -->
           <a class="navbar-brand" href="{{base_path}}">NytOnKeittokirja</a>
@@ -40,15 +41,15 @@
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
             <li><a href="{{base_path}}">Etusivu</a></li>
-            <li><a href="http://rivorivo.users.cs.helsinki.fi/tsoha/reseptit">Reseptit</li>
-          </ul> 
-
+            <li><a href="http://rivorivo.users.cs.helsinki.fi/tsoha/reseptit">Reseptit</a></li>
+            <li><a href="http://rivorivo.users.cs.helsinki.fi/tsoha/raakaaineet">Raakaaineet</a></li>
+            </ul>
           {% if kokkaaja_logged_in %}
-          <form class="navbar-form navbar-right" method="post" action="{base_path}/logout">
+          <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">
           <button type="submit" class="btn btn-default">Kirjaudu ulos</button>
         </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://rivorivo.users.cs.helsinki.fi/tsoha/login">{{kokkaaja_logged_in.username}} kirjautunut</a></li> 
+            <li><a href="http://rivorivo.users.cs.helsinki.fi/tsoha/login">Kirjautunut: {{kokkaaja_logged_in.username}} </a></li> 
           </ul>
           {% else %}
           <ul class="nav navbar-nav navbar-left">

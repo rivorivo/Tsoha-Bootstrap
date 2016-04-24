@@ -3,7 +3,8 @@
     <button type="submit" class="btn btn-danger">Poista</button>
   </form>
 {% endmacro %}
+
 {% macro cancel_button(action, text) %}
-<form action="" style="display: inline-block;">
-<button type="cancel" class="secondary_button">Peruuta</button>
+<form method="post" action="{{action}}" style="display: inline-block;">
+<button type="submit" class="secondary_button">Peruuta</button>
 {% endmacro %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "macros/forms.html" as forms %}
 {% block content %}
-<h1>Muokkaa reseptiä</h1>
+<h1>Muokkaa raaka-ainetta</h1>
 
 {% if errors %}
     <div class="alert alert-danger">
@@ -13,30 +13,27 @@
     </div>
   {% endif %}
 
-<form method="post" action="{{base_path}}/resepti">
+<form method="post" action="{{base_path}}/raakaaine">
 
 <div class="form-group">
-  <label class="control-label">Kokkaaja_id:</label>
-  <input type="text" name="kokkaaja_id" class="form-control" value="{{attributes.kokkaaja_id}}">
+  <label class="control-label">Kategoria:</label>
+  <input type="text" name="rakategoria_id" class="form-control" value="{{attributes.rakategoria_id_id}}">
 </div>
 
 <div class="form-group">
 	<label class="control-label">Nimi:</label>
 	<input type="text" name="name" class="form-control" value="{{attributes.name}}">
 </div>
- 
- <div class="form-group">
-      <label class="control-label">Ohje:</label>
-      <input type="text" name="kuvaus" class="form-control" value="{{attributes.kuvaus}}">
-   </div>
 
+   <div class="form-group">
+  <label class="control-label">Kilohinta:</label>
+  <input type="text" name="kilohinta" class="form-control" value="{{attributes.kilohinta}}">
 </div>
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Lisää</button>
-      <input type="hidden" name="lisatty" value=NOW()>
     </div>
     </form>
 {{forms.destroy_button()}}
-{{forms.cancel_button("#{base_path}")}}
+{{forms.cancel_button()}}
 {% endblock %}

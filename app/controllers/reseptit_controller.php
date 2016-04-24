@@ -1,6 +1,7 @@
 <?php
 class ReseptitController extends BaseController{
-	public static function index(){
+	
+  public static function index(){
     BaseController::check_logged_in();
 	$reseptit = Resepti::all();
 	View::make('resepti/index.html', array('reseptit' => $reseptit));
@@ -12,12 +13,15 @@ class ReseptitController extends BaseController{
 
 	public static function show($id){
     BaseController::check_logged_in();
-		View::make('resepti/show.html');
+    $resepti= Resepti::find($id);
+		View::make('resepti/show.html', array('resepti' => $resepti));
 	}
 
   public static function store(){
     BaseController::check_logged_in();
     $params = $_POST;
+
+    //$raakaaineet = $params['raakaaineet'];
 
     $attributes = array(  
       'kokkaaja_id' => $params['kokkaaja_id'],
@@ -25,6 +29,11 @@ class ReseptitController extends BaseController{
       'kuvaus' => $params['kuvaus'],
       'lisatty' => $params['lisatty']
     );
+
+    //'raakaaineet' => array()
+    //foreach ($raakaaineet as $raakaaine) {
+     // $attributes['raakaaineet'][]=$raakaaine;
+    //}
 
     $resepti= new Resepti($attributes);
 
@@ -53,7 +62,7 @@ class ReseptitController extends BaseController{
       'kokkaaja_id' => $params['kokkaaja_id'],
       'name' => $params['name'],
       'kuvaus' => $params['kuvaus'],
-      'lisatty' => $params['lisatty']
+      'lisatty' => $params['lisatty'],
     );
 
     // Alustetaan Resepti-olio käyttäjän syöttämillä tiedoilla

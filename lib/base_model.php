@@ -3,9 +3,9 @@
   class BaseModel{
     // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
     protected $validators;
-    public $kokkaaja_logged_in;
+   
 
-    public function __construct($attributes){
+    public function __construct($attributes=null){
       // Käydään assosiaatiolistan avaimet läpi
          
       foreach($attributes as $attribute => $value){

@@ -22,9 +22,9 @@
       {% for resepti in reseptit %}
       <tr>
         <td><a href="{{base_path}}/resepti/{{resepti.id}}">{{resepti.name}}</a></td>
-        <td><a href="{{base_path}}/resepti/{{resepti.kokkaaja_id}}">{{resepti.kokkaaja_id}}</a></td>
+        <td><a href="{{base_path}}/kokkaaja/{{resepti.kokkaaja_id}}">{{resepti.kokkaajaNimi}}</a></td>
         <td><a href="#">siitä yhdistävästä taulusta haetut raaka-aineet listattuna</a></td>
-        <td><a href="{{base_path}}/resepti/{{resepti.lisatty}}">{{resepti.lisatty}}</td>
+        <td>{{resepti.lisatty}}</td>
         <th><a class="btn btn-default btn-sm" href="{{base_path}}/resepti/{{resepti.id}}/edit">Muokkaa</a></th>
       </tr>
       {% endfor %}
