@@ -12,3 +12,5 @@ INSERT INTO raakaaineet (rakategoria_id, name, kilohinta) VALUES
 
 INSERT INTO reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES ('1','linssikeitto','lisää lisnssit ja ym.',NOW());
 INSERT INTO reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES ('2','lämpimät leivät','Voitele leivät, lisää 6viipaletta juustoa/leipä ja laita mikroon täysille minuutiksi.',NOW());
+
+INSERT INTO ainekset (resepti_id, raakaaine_id) VALUES ('1','1');

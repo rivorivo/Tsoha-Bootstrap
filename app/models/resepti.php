@@ -21,7 +21,8 @@ class Resepti extends BaseModel{
 			'kuvaus' => $row['kuvaus'],
 			'kokkaajaNimi' => Kokkaaja::getName($row['kokkaaja_id']),	
 			'kokkaaja_id' => $row['kokkaaja_id'],		
-			'lisatty' => $row['lisatty']
+			'lisatty' => $row['lisatty'],
+			'ainekset' => Ainekset::getRaakaaineet($row['id'])
 			);
 		}
 
