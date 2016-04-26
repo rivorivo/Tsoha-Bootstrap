@@ -13,16 +13,12 @@
     </div>
   {% endif %}
 
-<form method="post" action="{{base_path}}/resepti">
+<form method="post" action="{{base_path}}/resepti/{{attributes.id}}/update">
+
 
 <div class="form-group">
-  <label class="control-label">Kokkaaja_id:</label>
-  <input type="text" name="kokkaaja_id" class="form-control" value="{{attributes.kokkaaja_id}}">
-</div>
-
-<div class="form-group">
-	<label class="control-label">Nimi:</label>
-	<input type="text" name="name" class="form-control" value="{{attributes.name}}">
+  <label class="control-label">Nimi:</label>
+  <input type="text" name="name" class="form-control" value="{{attributes.name}}">
 </div>
  
  <div class="form-group">
@@ -33,7 +29,9 @@
 </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+      <button type="submit" class="btn btn-primary">Muokkaa</button>
+      <input type="hidden" name="lisatty" value=NOW()>
+              <input type="hidden" name="kokkaaja_id" value={{kokkaaja_logged_in.id}}>
       <input type="hidden" name="lisatty" value=NOW()>
     </div>
     </form>

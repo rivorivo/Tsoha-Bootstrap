@@ -47,9 +47,11 @@ public function __construct($attributes){
 	 
  public function save(){
     // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
-    $query = DB::connection()->prepare('INSERT INTO Raakaaineet (rakategoria_id, name, sesonkiAlku, sesonkiLoppu, kilohinta) VALUES (:rakategoria_id, :name, :sesonkiAlku, :sesonkiLoppu, :kilohinta) RETURNING id');
+  
+
+    $query = DB::connection()->prepare('INSERT INTO Raakaaineet (rakategoria_id, name, kilohinta) VALUES (:rakategoria_id, :name, :kilohinta) RETURNING id');
     // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
-    $query->execute(array('rakategoria_id' => $this->rakategoria_id, 'name' => $this->name, 'sesonkiAlku' => $this->sesonkiAlku, 'sesonkiLoppu' => $this->sesonkiLoppu, 'kilohinta'=> $this->kilohinta));
+    $query->execute(array('rakategoria_id'=> Rakategoria::getId('rakategoria'), 'name' => $this->name, 'kilohinta'=> $this->kilohinta));
     // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
     $row = $query->fetch();
     // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
@@ -57,13 +59,8 @@ public function __construct($attributes){
   }
 
     public function update(){
- 	$query = DB::connection()->prepare('UPDATE Raakaaineet (rakategoria_id, name, sesonkiAlku, sesonkiLoppu, kilohinta) VALUES (:rakategoria_id, :name, :sesonkiAlku, :sesonkiLoppu, :kilohinta) RETURNING id');
-
- 	  $query->execute(array('rakategoria_id' => $this->rakategoria_id, 'name' => $this->name, 'sesonkiAlku' => $this->sesonkiAlku, 'sesonkiLoppu' => $this->sesonkiLoppu, 'kilohinta'=> $this->kilohinta));
-
- 	$row = $query->fetch();
- 	Kint::dump($row);
-   	$this->id = $row['id'];
+ 	$query = DB::connection()->prepare('UPDATE Raakaaineet SET rakategoria_id=:rakategoria_id, name=:name, kilohinta=:kilohinta');
+ 	$query->execute(array('rakategoria_id' => $this->rakategoria_id, 'name' => $this->name, 'kilohinta'=> $this->kilohinta));
   }
 
   public function destroy(){

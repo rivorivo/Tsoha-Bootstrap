@@ -35,6 +35,9 @@
   $routes->post('/resepti/:id/edit', function($id){
     ReseptitController::edit($id);
   });
+  $routes->post('/resepti/:id/update', function($id){
+    ReseptitController::update($id);
+  });
   $routes->post('/resepti/:id/destroy', function($id){
     ReseptitController::destroy($id);
   });
@@ -80,6 +83,9 @@ $routes->get('/login', function(){
   });
   $routes->post('/raakaaine/:id/edit', function($id){
    RaakaaineController::edit($id);
+  });
+   $routes->post('/raakaaine/:id/update', function($id){
+   RaakaaineController::update($id);
   });
   $routes->post('/raakaaine/:id/destroy', function($id){
     RaakaaineController::destroy($id);

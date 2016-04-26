@@ -13,11 +13,11 @@
     </div>
   {% endif %}
 
-<form method="post" action="{{base_path}}/raakaaine">
+<form method="post" action="{{base_path}}/raakaaine/{{attributes.id}}/update">
 
 <div class="form-group">
   <label class="control-label">Kategoria:</label>
-  <input type="text" name="rakategoria_id" class="form-control" value="{{attributes.rakategoria_id_id}}">
+  <input type="text" name="rakategoria" class="form-control" value="{{attributes.rakategoria_id}}">
 </div>
 
 <div class="form-group">

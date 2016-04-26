@@ -49,7 +49,6 @@ class Resepti extends BaseModel{
 
 	 public function save(){
     // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
-	
     $query = DB::connection()->prepare('INSERT INTO Reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES (:kokkaaja_id, :name, :kuvaus, :lisatty) RETURNING id');
     // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
     $query->execute(array('kokkaaja_id' => $this->kokkaaja_id, 'name' => $this->name, 'kuvaus' => $this->kuvaus, 'lisatty' => $this->lisatty));
@@ -60,13 +59,11 @@ class Resepti extends BaseModel{
   }
 
   public function update(){
- 	$query = DB::connection()->prepare('UPDATE Reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES (:kokkaaja_id, :name, :kuvaus, :lisatty) RETURNING id');
+
+ 	$query = DB::connection()->prepare('UPDATE Reseptit SET kokkaaja_id=:kokkaaja_id, name=:name, kuvaus=:kuvaus, lisatty=:lisatty');
 
  	$query->execute(array('kokkaaja_id' => $this->kokkaaja_id, 'name' => $this->name, 'kuvaus' => $this->kuvaus, 'lisatty' => $this->lisatty));
 
- 	$row = $query->fetch();
- 	Kint::dump($row);
-   	$this->id = $row['id'];
   }
 
   public function destroy(){

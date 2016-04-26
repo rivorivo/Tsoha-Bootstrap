@@ -21,19 +21,12 @@ class ReseptitController extends BaseController{
     BaseController::check_logged_in();
     $params = $_POST;
 
-    //$raakaaineet = $params['raakaaineet'];
-
     $attributes = array(  
       'kokkaaja_id' => $params['kokkaaja_id'],
       'name' => $params['name'],
       'kuvaus' => $params['kuvaus'],
       'lisatty' => $params['lisatty']
     );
-
-    //'raakaaineet' => array()
-    //foreach ($raakaaineet as $raakaaine) {
-     // $attributes['raakaaineet'][]=$raakaaine;
-    //}
 
     $resepti= new Resepti($attributes);
 
@@ -75,7 +68,7 @@ class ReseptitController extends BaseController{
       // Kutsutaan alustetun olion update-metodia, joka päivittää reseptin tiedot tietokannassa
       $resepti->update();
 
-      Redirect::to('/reseptit/' . $resepti->id, array('message' => 'Reseptiä on muokattu onnistuneesti!'));
+      Redirect::to('/reseptit', array('message' => 'Reseptiä on muokattu onnistuneesti!'));
     }
   }
 

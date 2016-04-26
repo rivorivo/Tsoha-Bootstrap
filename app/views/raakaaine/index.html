@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Raaka-aineet</h1>
-
+{% if error %}
+<div class="alert alert-danger">
+ {{error}}
+</div>
+{% endif %}
+{% if message %}
+<div class="alert alert-success">
+ {{message}}
+</div>
+{% endif %}
   <p>
     <a href="{{base_path}}/raakaaine/uusi" class="btn btn-success">Lisää raaka-aine</a>
   </p>

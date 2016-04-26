@@ -38,8 +38,7 @@
       <button type="submit" class="btn btn-primary">Lisää</button>
        <input type="hidden" name="lisatty" value=NOW()>
               <input type="hidden" name="kokkaaja_id" value={{kokkaaja_logged_in.id}}>
-
-        <button type="submit" value="cancel" class="btn btn-secondary">Peruuta</button>
     </div>
+    {{forms.cancel_button("#{base_path}")}}
   </form>
 {% endblock %}

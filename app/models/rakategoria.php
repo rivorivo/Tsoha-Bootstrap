@@ -8,6 +8,18 @@ Class Rakategoria extends BaseModel{
 		$this->validators = array('validate_name');
 	}
 
+	public static function getId($name){		
+		$query = DB::connection()->prepare('SELECT * FROM rakategoriat WHERE name = :name LIMIT 1');
+	$query->execute(array('name' => $name));
+		$row = $query->fetch();
+		if($row){
+			$id = $row['id'];
+			return $id;
+		}else{
+		return null;
+	}
+	}
+	
 	public static function getName($id){
 
 	$query = DB::connection()->prepare('SELECT * FROM rakategoriat WHERE id = :id LIMIT 1');
@@ -15,9 +27,10 @@ Class Rakategoria extends BaseModel{
 		$row = $query->fetch();
 		if($row){
 			$name = $row['name'];
+			return $name;
+		}else{
+		return null;
 		}
-		return $name;
-
 	}
 
 	public static function all(){

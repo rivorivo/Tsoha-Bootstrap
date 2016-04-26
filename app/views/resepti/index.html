@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Reseptit</h1>
-
+{% if error %}
+<div class="alert alert-danger">
+ {{error}}
+</div>
+{% endif %}
+{% if message %}
+<div class="alert alert-success">
+ {{message}}
+</div>
+{% endif %}
   <p>
     <a href="{{base_path}}/resepti/uusi" class="btn btn-success">Lisää resepti</a>
   </p>

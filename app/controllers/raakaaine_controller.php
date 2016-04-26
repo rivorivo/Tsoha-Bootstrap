@@ -23,7 +23,7 @@ class RaakaaineController extends BaseController{
 
    
     $attributes = array(  
-		'rakategoria_id'=>$params['rakategoria_id'],
+		'rakategoria_id'=>Rakategoria::getId($params['rakategoria']),
 		'name'=>$params['name'],
 		'kilohinta'=>$params['kilohinta']
     );
@@ -44,6 +44,7 @@ class RaakaaineController extends BaseController{
   public static function edit($id){
     self::check_logged_in();
     $raakaaine = Raakaaine::find($id);
+   
     View::make('raakaaine/edit.html', array('attributes' => $raakaaine));
   }
 
@@ -53,8 +54,7 @@ class RaakaaineController extends BaseController{
     $params = $_POST;
 
     $attributes = array(  
-    'id'=>$params['id'],
-		'rakategoria_id'=>$params['rakategoria_id'],
+		'rakategoria_id'=>Rakategoria::getId($params['rakategoria']),
 		'name'=>$params['name'],
 		'kilohinta'=>$params['kilohinta']
     );
@@ -68,7 +68,7 @@ class RaakaaineController extends BaseController{
     }else{
       $raakaaine->update();
 
-      Redirect::to('/raakaaineet/' . $raakaaine->id, array('message' => 'Raakaainetta on muokattu onnistuneesti!'));
+      Redirect::to('/raakaaineet' . $raakaaine->id, array('message' => 'Raakaainetta on muokattu onnistuneesti!'));
     }
   }
 
