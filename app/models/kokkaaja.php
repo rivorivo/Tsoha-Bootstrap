@@ -25,6 +25,14 @@ $query->execute(array('id' => $id));
 		return $name;
 }
 
+public function reseptit($id){
+$query = DB::connection()->prepare('SELECT * FROM reseptit WHERE kokkaaja_id = :kokkaaja_id');
+	$query->execute(array('kokkaaja_id' => $id));
+	$reseptit = $query->fetchAll();
+	
+	return $reseptit;
+}
+
 public function authenticate($username,$password){
 	$query = DB::connection()->prepare('SELECT * FROM kokkaajat WHERE username= :username AND password= :password LIMIT 1');
 	$query->execute(array('username' => $username, 'password' => $password));

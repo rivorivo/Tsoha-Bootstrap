@@ -8,13 +8,14 @@ Class Ainekset extends BaseModel {
 		$query->execute();
 		$rows = $query->fetchAll();
 		$reseptit = array();
-
+		if($rows){
 		foreach ($rows as $row) {
 			$reseptit[]= array(
 					'raakaaine_id'=>$row['raakaaine_id'],
 					'resepti_id'=>$row['resepti_id']
 		);
 		return $reseptit;
+		}
 		}
 	}
 
@@ -25,13 +26,15 @@ Class Ainekset extends BaseModel {
 		$raakaaineet = array();
 
 			foreach ($rows as $row) {
-				$raakaaineet[]= array(
+				$raakaaineet= New Ainekset(array(
 						'raakaaine_id'=>$row['raakaaine_id'],
 						'resepti_id'=>$row['resepti_id']
-				);
+				));
 			}
 			return $raakaaineet;
 		}
+
+		
 
 		public function save(){
 			$query = DB::connection()->prepare('INSERT INTO Ainekset(raakaaine_id, resepti_id) VALUES (:raakaaine_id, :resepti_id)');

@@ -20,7 +20,7 @@
       <tr>
         <th>Nimi</th>
         <th>Kokkaaja</th>
-        <th>Ainekset</th>
+        <th>Ainekset </th>
         <th>Lisäyspäivä</th>
         <th></th>
       </tr>
@@ -34,7 +34,9 @@
         <td><a href="{{base_path}}/kokkaaja/{{resepti.kokkaaja_id}}">{{resepti.kokkaajaNimi}}</a></td>
         <td>
         {% for aines in resepti.ainekset%}
+      
         <a href="#">{{aines.raakaaine_id}}</a>
+
         {% endfor %}
         </td>
         <td>{{resepti.lisatty}}</td>

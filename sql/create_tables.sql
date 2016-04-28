@@ -19,14 +19,14 @@ CREATE TABLE raakaaineet(
 
 CREATE TABLE reseptit(
 id SERIAL PRIMARY KEY,
-kokkaaja_id INTEGER REFERENCES kokkaajat(id),
+kokkaaja_id INTEGER REFERENCES kokkaajat(id) ON DELETE CASCADE,
 name varchar(50) NOT NULL,
 kuvaus varchar(500) NOT NULL,
 lisatty DATE
 );
 
 CREATE TABLE ainekset(
-resepti_id INTEGER REFERENCES reseptit(id),
-raakaaine_id INTEGER REFERENCES raakaaineet(id)
+resepti_id INTEGER REFERENCES reseptit(id) ON DELETE CASCADE,
+raakaaine_id INTEGER REFERENCES raakaaineet(id) ON DELETE CASCADE
 );
 

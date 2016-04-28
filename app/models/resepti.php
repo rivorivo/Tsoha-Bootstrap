@@ -15,6 +15,11 @@ class Resepti extends BaseModel{
 
 
 		foreach ($rows as $row) {			
+			
+			
+			$ainekset[]=Ainekset::getRaakaaineet($row['id']);
+			
+
 			$reseptit[] = array(
 			'id' => $row['id'],
 			'name' => $row['name'],
@@ -22,7 +27,8 @@ class Resepti extends BaseModel{
 			'kokkaajaNimi' => Kokkaaja::getName($row['kokkaaja_id']),	
 			'kokkaaja_id' => $row['kokkaaja_id'],		
 			'lisatty' => $row['lisatty'],
-			'ainekset' => Ainekset::getRaakaaineet($row['id'])
+			'ainekset' => $ainekset
+			
 			);
 		}
 

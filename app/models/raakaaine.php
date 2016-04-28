@@ -47,7 +47,12 @@ public function __construct($attributes){
 	 
  public function save(){
     // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
-  
+  			$niminen = DB::connection()->prepare('SELECT * FROM raakaaineet WHERE name = :name LIMIT 1');
+		$niminen->execute(array('name' => $this->name) );
+		$olemassa = $niminen->fetch();
+		if($olemassa){
+				Redirect::to('/raakaaineet',array('error' => 'raaka-aine on jo olemassa, uutta ei lisätty!'));
+		}
 
     $query = DB::connection()->prepare('INSERT INTO Raakaaineet (rakategoria_id, name, kilohinta) VALUES (:rakategoria_id, :name, :kilohinta) RETURNING id');
     // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi

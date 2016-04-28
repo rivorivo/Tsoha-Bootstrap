@@ -2,6 +2,9 @@
 {% block content %}
 <h1>{{kokkaaja.username}}</h1>
 <ul>
-<li>Reseptit:</li>
+<h3>Reseptit:</h3>
+{%for resepti in reseptit%}
+<li><a href="{{base_path}}/resepti/{{resepti.id}}">{{resepti.name}}</a></li>
+{% endfor %}
 </ul>
 {% endblock %}

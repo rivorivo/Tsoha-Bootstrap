@@ -27,7 +27,9 @@ public static function kirjautunut(){
   }
   public function show($id){
      BaseController::check_logged_in();
+     $reseptit= Kokkaaja::reseptit($id);
      $kokkaaja= Kokkaaja::find($id);
-     View::make('/kokkaaja/show.html', array('kokkaaja' => $kokkaaja));
+ 
+     View::make('/kokkaaja/show.html', array('kokkaaja' => $kokkaaja, 'reseptit' => $reseptit));
   }
 }
