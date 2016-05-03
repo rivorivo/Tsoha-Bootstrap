@@ -18,7 +18,11 @@ class Resepti extends BaseModel{
 			
 			
 			$ainekset[]=Ainekset::getRaakaaineet($row['id']);
-			
+			$nimet[]=array();
+			foreach ($ainekset as $aines) {
+				$nimet[]=Raakaaine::getName($aines);
+
+			}
 
 			$reseptit[] = array(
 			'id' => $row['id'],

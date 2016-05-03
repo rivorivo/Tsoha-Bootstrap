@@ -63,6 +63,11 @@ public function __construct($attributes){
     $this->id = $row['id'];
   }
 
+  	public function getNimi($id){
+  		$aine=find($id)
+  		return $aine['name'];
+  	}
+
     public function update(){
  	$query = DB::connection()->prepare('UPDATE Raakaaineet SET rakategoria_id=:rakategoria_id, name=:name, kilohinta=:kilohinta');
  	$query->execute(array('rakategoria_id' => $this->rakategoria_id, 'name' => $this->name, 'kilohinta'=> $this->kilohinta));
