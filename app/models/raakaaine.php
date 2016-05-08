@@ -30,17 +30,17 @@ public function __construct($attributes){
 	public function find($id){
 
 		$query = DB::connection()->prepare('SELECT * FROM raakaaineet WHERE id = :id LIMIT 1');
-		$query->execute(array('id' => $id)); 
+		$query->execute(array('id'=>$id)); 
 		$row = $query->fetch();
 			
 			if($row){
-			$raakaaine= new Raakaaine(array(
+			$raakaaine= array(
 				'id'=>$row['id'],
-				'rakategoria_id'=>$row['rakategoria_id'],
+				'rakategora_id'=>$row['rakategoria_id'],
 				'rakategoria'=>Rakategoria::getName($row['rakategoria_id']),
 				'name'=>$row['name'],
 				'kilohinta'=>$row['kilohinta']
-				));			
+				);			
 		}
 		return $raakaaine;
 	}
@@ -56,21 +56,21 @@ public function __construct($attributes){
 
     $query = DB::connection()->prepare('INSERT INTO Raakaaineet (rakategoria_id, name, kilohinta) VALUES (:rakategoria_id, :name, :kilohinta) RETURNING id');
     // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
-    $query->execute(array('rakategoria_id'=> Rakategoria::getId('rakategoria'), 'name' => $this->name, 'kilohinta'=> $this->kilohinta));
+    $query->execute(array('rakategoria_id'=> $this->rakategoria_id, 'name' => $this->name, 'kilohinta'=> $this->kilohinta));
     // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
     $row = $query->fetch();
     // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
     $this->id = $row['id'];
   }
 
-  	public function getNimi($id){
-  		$aine=find($id)
+  	public function getName($id){
+  		$aine=self::find($id);
   		return $aine['name'];
   	}
 
     public function update(){
- 	$query = DB::connection()->prepare('UPDATE Raakaaineet SET rakategoria_id=:rakategoria_id, name=:name, kilohinta=:kilohinta');
- 	$query->execute(array('rakategoria_id' => $this->rakategoria_id, 'name' => $this->name, 'kilohinta'=> $this->kilohinta));
+ 	$query = DB::connection()->prepare('UPDATE raakaaineet SET rakategoria_id=:rakategoria_id, name=:name, kilohinta=:kilohinta WHERE id = :id ');
+ 	$query->execute(array('id'=> $this->id, 'rakategoria_id' => $this->rakategoria_id, 'name' => $this->name, 'kilohinta'=> $this->kilohinta));
   }
 
   public function destroy(){

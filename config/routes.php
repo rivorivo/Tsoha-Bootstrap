@@ -6,14 +6,11 @@
   }
 
   $routes->get('/', function() {
-    HelloWorldController::index();
-  });
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    SiteController::index();
   });
   
   $routes->get('/home', function(){
-  	HelloWorldController::home();
+  	SiteController::index();
   });
 
 //Reseptien reitit

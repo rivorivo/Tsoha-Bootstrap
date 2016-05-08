@@ -52,6 +52,7 @@ class ReseptitController extends BaseController{
     $params = $_POST;
 
     $attributes = array(
+      'id' => $id,
       'kokkaaja_id' => $params['kokkaaja_id'],
       'name' => $params['name'],
       'kuvaus' => $params['kuvaus'],

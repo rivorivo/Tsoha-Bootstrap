@@ -13,25 +13,15 @@ class Resepti extends BaseModel{
 		$rows = $query->fetchAll();
 		$reseptit = array();
 
-
 		foreach ($rows as $row) {			
 			
-			
-			$ainekset[]=Ainekset::getRaakaaineet($row['id']);
-			$nimet[]=array();
-			foreach ($ainekset as $aines) {
-				$nimet[]=Raakaaine::getName($aines);
-
-			}
-
 			$reseptit[] = array(
 			'id' => $row['id'],
 			'name' => $row['name'],
 			'kuvaus' => $row['kuvaus'],
 			'kokkaajaNimi' => Kokkaaja::getName($row['kokkaaja_id']),	
 			'kokkaaja_id' => $row['kokkaaja_id'],		
-			'lisatty' => $row['lisatty'],
-			'ainekset' => $ainekset
+			'lisatty' => $row['lisatty']
 			
 			);
 		}
@@ -61,7 +51,7 @@ class Resepti extends BaseModel{
 	 public function save(){
     // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
     $query = DB::connection()->prepare('INSERT INTO Reseptit (kokkaaja_id, name, kuvaus, lisatty) VALUES (:kokkaaja_id, :name, :kuvaus, :lisatty) RETURNING id');
-    // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
+
     $query->execute(array('kokkaaja_id' => $this->kokkaaja_id, 'name' => $this->name, 'kuvaus' => $this->kuvaus, 'lisatty' => $this->lisatty));
     // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
     $row = $query->fetch();
@@ -71,10 +61,9 @@ class Resepti extends BaseModel{
 
   public function update(){
 
- 	$query = DB::connection()->prepare('UPDATE Reseptit SET kokkaaja_id=:kokkaaja_id, name=:name, kuvaus=:kuvaus, lisatty=:lisatty');
+ 	$query = DB::connection()->prepare('UPDATE reseptit SET kokkaaja_id=:kokkaaja_id, name=:name, kuvaus=:kuvaus, lisatty=:lisatty WHERE id = :id');
 
- 	$query->execute(array('kokkaaja_id' => $this->kokkaaja_id, 'name' => $this->name, 'kuvaus' => $this->kuvaus, 'lisatty' => $this->lisatty));
-
+ 	$query->execute(array('id'=>$this->id, 'kokkaaja_id' => $this->kokkaaja_id, 'name' => $this->name, 'kuvaus' => $this->kuvaus, 'lisatty' => $this->lisatty));
   }
 
   public function destroy(){

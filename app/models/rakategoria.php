@@ -7,7 +7,24 @@ Class Rakategoria extends BaseModel{
 		parent::__construct($attributes);
 		$this->validators = array('validate_name');
 	}
+public static function all(){
+		
+		$query = DB::connection()->prepare('SELECT * FROM rakategoriat ORDER BY name ASC');
+		$query->execute();
+		$rows = $query->fetchAll();
+		$kategoriat = array();
 
+		foreach ($rows as $row) {			
+			
+			$kategoriat[] = array(
+			'id' => $row['id'],
+			'name' => $row['name']
+			
+			);
+		}
+
+		return $kategoriat;
+	}
 	public static function getId($name){		
 		$query = DB::connection()->prepare('SELECT * FROM rakategoriat WHERE name = :name LIMIT 1');
 	$query->execute(array('name' => $name));
@@ -33,19 +50,4 @@ Class Rakategoria extends BaseModel{
 		}
 	}
 
-	public static function all(){
-		
-		$query = DB::connection()->prepare('SELECT * FROM rakategoriat ORDER BY name ASC');
-		$query->execute();
-		$rows = $query->fetchAll();
-		$raakaaineet = array();
-
-	foreach ($rows as $row) {
-		$rakategoriat[]= array(
-				'id'=>$row['id'],
-				'name'=>$row['name']
-				);
-		}
-		return $rakategoriat;
-	} 
 }

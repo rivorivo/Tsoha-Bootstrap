@@ -53,7 +53,8 @@ class RaakaaineController extends BaseController{
     self::check_logged_in();
     $params = $_POST;
 
-    $attributes = array(  
+    $attributes = array( 
+    'id'=>$id, 
 		'rakategoria_id'=>Rakategoria::getId($params['rakategoria']),
 		'name'=>$params['name'],
 		'kilohinta'=>$params['kilohinta']
@@ -68,7 +69,7 @@ class RaakaaineController extends BaseController{
     }else{
       $raakaaine->update();
 
-      Redirect::to('/raakaaineet' . $raakaaine->id, array('message' => 'Raakaainetta on muokattu onnistuneesti!'));
+      Redirect::to('/raakaaineet', array('message' => 'Raakaainetta on muokattu onnistuneesti!'));
     }
   }
 
